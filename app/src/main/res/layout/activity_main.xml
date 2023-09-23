@@ -10,7 +10,7 @@
         android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cestas de frutas"
+        tools:text="Cesta de frutas"
         tools:layout_editor_absoluteX="70dp"
         tools:layout_editor_absoluteY="105dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Banana, laranja e maracujá"
+        tools:text="Banana, laranja e maracujá"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nome"
         />
@@ -33,7 +33,7 @@
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="29.99"
+        tools:text="29.99"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descricao"
         />

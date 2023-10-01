@@ -27,6 +27,7 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
 
             val campoValor = findViewById<EditText>(R.id.valor)
             val valorEmTexto = campoValor.text.toString()
+
             val valor = if(valorEmTexto.isBlank()) {
                 BigDecimal.ZERO
             } else {

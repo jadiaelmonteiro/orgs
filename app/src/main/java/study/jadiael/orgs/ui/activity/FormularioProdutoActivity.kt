@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
 import study.jadiael.orgs.R
+import study.jadiael.orgs.dao.ProdutosDao
 import study.jadiael.orgs.model.Produto
 import java.math.BigDecimal
 
@@ -40,6 +41,10 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
             )
 
             Log.i("FormularioProduto", "Produto salvo $produtoNovo")
+            val dao = ProdutosDao()
+            dao.adiciona(produtoNovo)
+            Log.i("FormularioProduto", "Produto salvo com dao ${dao.buscaTodos()}")
+            finish()
         }
     }
 }

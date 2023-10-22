@@ -1,6 +1,7 @@
 package study.jadiael.orgs.dao
 
 import study.jadiael.orgs.model.Produto
+import java.math.BigDecimal
 
 class ProdutosDao {
 
@@ -13,7 +14,9 @@ class ProdutosDao {
     }
 
     companion object {
-        private val produtos = mutableListOf<Produto>()
+        private val produtos = mutableListOf<Produto>(
+            Produto(nome="Cesta de frutas", descricao="Sala de frutas", valor = BigDecimal("123.123") )
+        )
     }
 
 }

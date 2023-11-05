@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import study.jadiael.orgs.R
 import study.jadiael.orgs.model.Produto
+import java.text.NumberFormat
+import java.util.Locale
 
 class ListaProdutosAdapter(
     private val context: Context,
@@ -15,6 +17,7 @@ class ListaProdutosAdapter(
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
     private val produtos = produtos.toMutableList()
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun vincula(produto: Produto) {
@@ -23,8 +26,15 @@ class ListaProdutosAdapter(
             val descricao = itemView.findViewById<TextView>(R.id.produto_item_descricao)
             descricao.text = produto.descricao
             val valor = itemView.findViewById<TextView>(R.id.produto_item_valor)
-            valor.text = produto.valor.toPlainString()
+            val valorEmMoeda: String = formataParaMoedaBrasileira(produto)
+            valor.text = valorEmMoeda
         }
+        private fun formataParaMoedaBrasileira(produto: Produto): String {
+            val formatador: NumberFormat = NumberFormat
+                .getCurrencyInstance(Locale("pt", "br"))
+            return formatador.format(produto.valor)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

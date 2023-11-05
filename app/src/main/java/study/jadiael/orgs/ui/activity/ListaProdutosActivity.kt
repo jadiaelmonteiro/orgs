@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import study.jadiael.orgs.R
 import study.jadiael.orgs.dao.ProdutosDao
 import study.jadiael.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
@@ -26,7 +26,7 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
     }
 
     private fun configuraFab() {
-        val fab = findViewById<FloatingActionButton>(R.id.activit_lista_produtos_fab)
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.activit_lista_produtos_fab)
         fab.setOnClickListener {
             vaiParaFormularioProduto()
         }

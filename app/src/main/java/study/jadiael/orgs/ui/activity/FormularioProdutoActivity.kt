@@ -3,6 +3,8 @@ package study.jadiael.orgs.ui.activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import study.jadiael.orgs.R
 import study.jadiael.orgs.dao.ProdutosDao
@@ -13,6 +15,8 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         configuraBotaoSalvar()
+        setAlertDialog()
+
     }
 
     private fun configuraBotaoSalvar() {
@@ -43,5 +47,20 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
             descricao = descricao,
             valor = valor
         )
+    }
+
+    private fun setAlertDialog() {
+        val imagemProduto = findViewById<ImageView>(R.id.activity_formulario_produto_imagem)
+        imagemProduto.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setView(R.layout.formulario_imagem)
+                .setPositiveButton("Confirmar") { _, _ ->
+
+                }
+                .setNegativeButton("Cancelar") { _, _ ->
+
+                }
+                .show()
+        }
     }
 }

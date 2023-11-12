@@ -50,6 +50,7 @@
             android:textColor="@android:color/holo_green_dark"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent
 "
             app:layout_constraintEnd_toEndOf="@id/produto_item_nome"

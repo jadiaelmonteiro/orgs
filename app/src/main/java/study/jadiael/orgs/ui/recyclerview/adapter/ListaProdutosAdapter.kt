@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import study.jadiael.orgs.R
 import study.jadiael.orgs.model.Produto
 import java.text.NumberFormat
@@ -28,11 +30,28 @@ class ListaProdutosAdapter(
             val valor = itemView.findViewById<TextView>(R.id.produto_item_valor)
             val valorEmMoeda: String = formataParaMoedaBrasileira(produto)
             valor.text = valorEmMoeda
+
+            setVisibilidade(produto, itemView)
+
+            itemView.findViewById<ImageView>(R.id.imageView).load(produto.imgUri) {
+                fallback(R.drawable.erro)
+                error(R.drawable.erro)
+            }
         }
         private fun formataParaMoedaBrasileira(produto: Produto): String {
             val formatador: NumberFormat = NumberFormat
                 .getCurrencyInstance(Locale("pt", "br"))
             return formatador.format(produto.valor)
+        }
+
+        fun setVisibilidade(produto: Produto, itemView: View) {
+            val visibilidade = if(produto.imgUri != null) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+
+            itemView.findViewById<ImageView>(R.id.imageView).visibility = visibilidade
         }
 
     }

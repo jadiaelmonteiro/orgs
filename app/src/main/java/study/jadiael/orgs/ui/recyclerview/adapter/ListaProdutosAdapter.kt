@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import study.jadiael.orgs.R
+import study.jadiael.orgs.extensios.tentaCarregarImagem
 import study.jadiael.orgs.model.Produto
 import java.text.NumberFormat
 import java.util.Locale
@@ -32,11 +33,8 @@ class ListaProdutosAdapter(
             valor.text = valorEmMoeda
 
             setVisibilidade(produto, itemView)
+            itemView.findViewById<ImageView>(R.id.imageView).tentaCarregarImagem(produto.imgUri)
 
-            itemView.findViewById<ImageView>(R.id.imageView).load(produto.imgUri) {
-                fallback(R.drawable.erro)
-                error(R.drawable.erro)
-            }
         }
         private fun formataParaMoedaBrasileira(produto: Produto): String {
             val formatador: NumberFormat = NumberFormat

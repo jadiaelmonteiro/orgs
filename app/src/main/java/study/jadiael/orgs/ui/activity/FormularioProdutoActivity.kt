@@ -11,6 +11,7 @@ import coil.load
 import com.google.android.material.textfield.TextInputEditText
 import study.jadiael.orgs.R
 import study.jadiael.orgs.dao.ProdutosDao
+import study.jadiael.orgs.extensios.tentaCarregarImagem
 import study.jadiael.orgs.model.Produto
 import java.math.BigDecimal
 
@@ -68,10 +69,7 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
                 val toStringText = textUri.text.toString()
 
                 val imgDialog = imagemProdutoLayout.findViewById<ImageView>(R.id.formulario_imagem_imagemview)
-                imgDialog.load(toStringText) {
-                    fallback(R.drawable.erro)
-                    error(R.drawable.erro)
-                }
+                imgDialog.tentaCarregarImagem(toStringText)
             }
 
             AlertDialog.Builder(this)
@@ -79,10 +77,7 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
                 .setPositiveButton("Confirmar") { _, _ ->
                     val textUri = imagemProdutoLayout.findViewById<TextInputEditText>(R.id.formulario_imagem_text_url)
                     val toStringText = textUri.text.toString()
-                    imagemProduto.load(toStringText) {
-                        fallback(R.drawable.erro)
-                        error(R.drawable.erro)
-                    }
+                    imagemProduto.tentaCarregarImagem(toStringText)
                     setValueUriImg(toStringText)
 
                 }

@@ -13,6 +13,7 @@ import study.jadiael.orgs.R
 import study.jadiael.orgs.dao.ProdutosDao
 import study.jadiael.orgs.extensios.tentaCarregarImagem
 import study.jadiael.orgs.model.Produto
+import study.jadiael.orgs.ui.dialog.FormularioImagemDialog
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario_produto) {
@@ -21,7 +22,6 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         super.onCreate(savedInstanceState)
         configuraBotaoSalvar()
         setAlertDialog()
-
     }
 
     private fun configuraBotaoSalvar() {
@@ -52,41 +52,15 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
             nome = nome,
             descricao = descricao,
             valor = valor,
-            imgUri = uriImg
+            imgUri = this.uriImg
         )
     }
 
     private fun setAlertDialog() {
         val imagemProduto = findViewById<ImageView>(R.id.activity_formulario_produto_imagem)
 
-        imagemProduto.setOnClickListener {
-            val inflater = LayoutInflater.from(this)
-            val imagemProdutoLayout = inflater.inflate(R.layout.formulario_imagem, null)
-            val btnCarregar = imagemProdutoLayout.findViewById<Button>(R.id.formulario_imagem_botao_carregar)
-
-            btnCarregar.setOnClickListener {
-                val textUri = imagemProdutoLayout.findViewById<TextInputEditText>(R.id.formulario_imagem_text_url)
-                val toStringText = textUri.text.toString()
-
-                val imgDialog = imagemProdutoLayout.findViewById<ImageView>(R.id.formulario_imagem_imagemview)
-                imgDialog.tentaCarregarImagem(toStringText)
-            }
-
-            AlertDialog.Builder(this)
-                .setView(imagemProdutoLayout.rootView)
-                .setPositiveButton("Confirmar") { _, _ ->
-                    val textUri = imagemProdutoLayout.findViewById<TextInputEditText>(R.id.formulario_imagem_text_url)
-                    val toStringText = textUri.text.toString()
-                    imagemProduto.tentaCarregarImagem(toStringText)
-                    setValueUriImg(toStringText)
-
-                }
-                .setNegativeButton("Cancelar") { _, _ -> }
-                .show()
+        FormularioImagemDialog(this).mostra(imagemProduto) { imagem ->
+            this.uriImg = imagem
         }
-    }
-
-    private fun setValueUriImg(uriImg: String) {
-        this.uriImg = uriImg
     }
 }

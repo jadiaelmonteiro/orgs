@@ -11,6 +11,7 @@ import coil.load
 import study.jadiael.orgs.R
 import study.jadiael.orgs.extensios.tentaCarregarImagem
 import study.jadiael.orgs.model.Produto
+import study.jadiael.orgs.ui.dialog.FormularioImagemDialog
 import java.text.NumberFormat
 import java.util.Locale
 

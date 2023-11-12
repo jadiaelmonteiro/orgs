@@ -58,9 +58,12 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
 
     private fun setAlertDialog() {
         val imagemProduto = findViewById<ImageView>(R.id.activity_formulario_produto_imagem)
+        print(this.uriImg)
 
-        FormularioImagemDialog(this).mostra(imagemProduto) { imagem ->
-            this.uriImg = imagem
+        imagemProduto.setOnClickListener {
+            FormularioImagemDialog(this).mostra(imagemProduto, this.uriImg) { imagem ->
+                this.uriImg = imagem
+            }
         }
     }
 }
